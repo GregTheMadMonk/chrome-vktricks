@@ -1,0 +1,88 @@
+* {
+	font-family: "Ubuntu", sans-serif;
+}
+
+body {
+	background-color: #26272b;
+	color: #ddd;
+	margin: 0;
+}
+
+/* settings page */
+#config_base {
+	height: 100%;
+	left: 0;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+#config_content {
+	margin-bottom: 1em;
+	margin-left: calc(15% + 4em);
+	margin-top: calc(3em * 3);
+}
+
+#header {
+	background-color: #0e243e;
+	border-bottom: 0.25em #18183c solid;
+	padding: 1em 0 1em 0;
+	pointer-events: all;
+	width: 100%;
+}
+
+#header h1{
+	display: inline-block;
+}
+
+#header #apply_button {
+	background-color: #18183c;
+	border: none;
+	border-radius: 0.25em;
+	box-shadow: #10102d -1px 1px;
+	color: #ddd;
+	margin-left: 2em;
+	padding: 0.5em;
+	vertical-align: text-bottom;
+}
+
+#header #apply_button:active {
+	box-shadow: none;
+}
+
+#sidebar {
+	background-color: #18183c;
+	border-radius: 1em;
+	float: left;
+	height: calc(100% - 2em);
+	margin: 1em;
+	pointer-events: all;
+	width: 15%;
+}
+
+#sidebar .trick_switch {
+	background-color: transparent;
+	color: #ddd;
+	border: none;
+	padding: 1em;
+	width: 100%;
+	transition: 0.2s;
+}
+
+#sidebar .trick_switch:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar .trick_switch:active {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+#sidebar .trick_switch:focus, #header #apply_button:focus {
+	outline: none;
+}
+
+#config_content .option_label {
+	display: inline-block;
+	width: 20%;
+}

@@ -1,0 +1,16 @@
+{
+	"display_name":	"Sidebar Renamer",
+	"description":	"Change Names of Sidebar Sections",
+	"version":	"1.0.0",
+	"content":	"js/content.js",
+	"options": [
+		{ "name": "sr_profile",	"default_value": "none",	"type": "string",	"display_name": "Profile" },
+		{ "name": "sr_feed",	"default_value": "none",	"type": "string",	"display_name": "Feed" },
+		{ "name": "sr_im",	"default_value": "Сообщения",	"type": "string",	"display_name": "Messenger" },
+		{ "name": "sr_friends",	"default_value": "none",	"type": "string",	"display_name": "Friends" },
+		{ "name": "sr_groups",	"default_value": "none",	"type": "string",	"display_name": "Groups" },
+		{ "name": "sr_albums",	"default_value": "none",	"type": "string",	"display_name": "Albums" },
+		{ "name": "sr_audios",	"default_value": "Аудиозаписи",	"type": "string",	"display_name": "Audios" },
+		{ "name": "sr_videos",	"default_value": "none",	"type": "string",	"display_name": "Videos" }
+	]
+}
