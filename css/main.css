@@ -8,6 +8,16 @@ body {
 	margin: 0;
 }
 
+/* popup */
+#configure_button {
+	background-color: #0e243e;
+	border: none;
+	border-radius: 0.25em;
+	color: #ddd;
+	margin: 1em;
+	padding: 1em;
+}
+
 /* settings page */
 #config_base {
 	height: 100%;
@@ -85,4 +95,35 @@ body {
 #config_content .option_label {
 	display: inline-block;
 	width: 20%;
+}
+
+#config_content input[type=text] {
+	background-color: #18183c;
+	border: #10102d 0.05em solid;
+	border-radius: 0.25em;
+	color: #ddd;
+}
+
+#config_content input[type=text]:focus {
+	border-color: #1f3754;
+	outline: none;
+}
+
+#config_content .option_resetter {
+	background-color: #18183c;
+	border: none;
+	border-radius: 0.25em;
+	box-shadow: #10102d -1px 1px;
+	color: #ddd;
+	margin-left: 0.25em;
+	vertical-align: text-bottom;
+}
+
+#config_content .option_resetter:focus {
+	box-shadow: #1f3754 -1px 1px;
+	outline: none;
+}
+
+#config_content .option_resetter:active {
+	box-shadow: none;
 }

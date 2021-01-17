@@ -35,12 +35,22 @@ function set_tab(tab_name) {
 		label.className = "option_label";
 		label.innerText = option.display_name;
 		let switcher = document.createElement("input");
-		switcher.type = "text";
 		switcher.id = tab_name + "_" + option.name;
 		switcher.value = option.value || option.default_value;
+		switch (option.type) {
+			case "string":
+				switcher.type = "text";
+				break;
+		}
+		let resetter = document.createElement("input");
+		resetter.type = "button";
+		resetter.onclick = () => { switcher.value = option.default_value; };
+		resetter.value = "X";
+		resetter.className = "option_resetter";
 		let nl = document.createElement("br");
 		content.appendChild(label);
 		content.appendChild(switcher);
+		content.appendChild(resetter);
 		content.appendChild(nl);
 	});
 }
