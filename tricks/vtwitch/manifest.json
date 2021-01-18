@@ -1,0 +1,10 @@
+{
+	"display_name":	"VTwitch",
+	"description":	"Twitch emotes in VK",
+	"version":	"1.0.0",
+	"content":	"js/content.js",
+	"options": [
+		{ "name": "vt_emotes_list",	"default_value": "PogChamp,LUL,4Head,Kappa", "type": "string", "display_name": "Allowed emotes (comma-separated)" },
+		{ "name": "vt_legacy_pog",	"default_value": "false",	"type": "bool",	"display_name": "Legacy PogChamp" }
+	]
+}

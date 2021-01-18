@@ -8,6 +8,8 @@ const replacers = {
 	"https://vk.com/albums":	() => { return sr_albums; },
 	"https://vk.com/audios":	() => { return sr_audios; },
 	"https://vk.com/video":		() => { return sr_videos; },
+	"https://vk.com/bookmarks":	() => { return sr_bookmarks; },
+	"https://vk.com/docs":		() => { return sr_files; },
 };
 
 Array.from(document.getElementsByClassName("left_label inl_bl")).forEach(node => {

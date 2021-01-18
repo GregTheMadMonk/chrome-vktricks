@@ -41,10 +41,21 @@ function set_tab(tab_name) {
 			case "string":
 				switcher.type = "text";
 				break;
+			case "bool":
+				switcher.type = "checkbox";
+				break;
 		}
 		let resetter = document.createElement("input");
 		resetter.type = "button";
-		resetter.onclick = () => { switcher.value = option.default_value; };
+		resetter.onclick = () => {
+			switch (option.type) {
+				case "string":
+					switcher.value = option.default_value;
+					break;
+				case "bool":
+					switcher.checked = (option.default_value == "true");
+			}
+		};
 		resetter.value = "X";
 		resetter.className = "option_resetter";
 		let nl = document.createElement("br");
@@ -80,7 +91,8 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 				trick_switch.title = tricks[trick].manifest.description;
 				trick_switch.id = trick + "_switch";
 				trick_switch.className = "trick_switch";
-				trick_switch.onclick = () => set_tab(trick);
+				let temp = trick; // idk why I need to do this
+				trick_switch.onclick = () => { set_tab(temp) };
 
 				sidebar.appendChild(trick_switch);
 
@@ -108,7 +120,15 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 document.getElementById("apply_button").onclick = () => {
 	for (trick in tricks) {
 		tricks[trick].manifest.options.forEach(option => {
-			const v = document.getElementById(trick + "_" + option.name).value;
+			let v;
+			switch (option.type) {
+				case "string":
+					v = document.getElementById(trick + "_" + option.name).value;
+					break;
+				case "bool":
+					v = document.getElementById(trick + "_" + option.name).checked ? "true" : "false";
+					break;
+			}
 			chrome.runtime.sendMessage({ type: "o_option", data: { trick: trick, name: option.name, value: v } });
 		});
 	}

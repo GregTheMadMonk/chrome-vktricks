@@ -11,6 +11,8 @@
 		{ "name": "sr_groups",	"default_value": "none",	"type": "string",	"display_name": "Groups" },
 		{ "name": "sr_albums",	"default_value": "none",	"type": "string",	"display_name": "Albums" },
 		{ "name": "sr_audios",	"default_value": "Аудиозаписи",	"type": "string",	"display_name": "Audios" },
-		{ "name": "sr_videos",	"default_value": "none",	"type": "string",	"display_name": "Videos" }
+		{ "name": "sr_videos",	"default_value": "none",	"type": "string",	"display_name": "Videos" },
+		{ "name": "sr_bookmarks",	"default_value": "none","type": "string",	"display_name": "Bookmarks" },
+		{ "name": "sr_files",	"default_value": "none",	"type": "string",	"display_name": "Files" }
 	]
 }

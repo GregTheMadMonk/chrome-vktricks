@@ -7,17 +7,19 @@ function try_inject_content() {
 		if (tab.url.match(/https:\/\/vk.com.*/) != null) {
 			log("Current tab is VK");
 
+			var content_code = "";
+
+			for (trick in tricks) tricks[trick].manifest.options.forEach(o => {
+				content_code += "let " + o.name + " = \"" + (o.value || o.default_value) + "\";"
+			});
+
 			for (trick in tricks) {
 				if (!tricks[trick].manifest.content) continue;
 				log("Injecting " + trick);
 
-				var content_code = "";
-
-				tricks[trick].manifest.options.forEach(o => {
-					content_code += "var " + o.name + " = \"" + (o.value || o.default_value) + "\";"
-				});
-
 				const contentfile = "tricks/" + trick + "/" + tricks[trick].manifest.content;
+
+				console.log(content_code);
 
 				chrome.runtime.getPackageDirectoryEntry(dir_e => dir_e.getFile(contentfile, {},
 					file => file.file(file_file => { // ikr

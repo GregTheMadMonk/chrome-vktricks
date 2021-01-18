@@ -18,6 +18,18 @@ body {
 	padding: 1em;
 }
 
+#configure_button:hover {
+	background-color: #0e2642;
+}
+
+#configure_button:active {
+	background-color: #18183c;
+}
+
+#configure_button:focus {
+	outline: none;
+}
+
 /* settings page */
 #config_base {
 	height: 100%;
