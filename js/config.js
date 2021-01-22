@@ -91,10 +91,20 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 				trick_switch.title = tricks[trick].manifest.description;
 				trick_switch.id = trick + "_switch";
 				trick_switch.className = "trick_switch";
+				let trick_enabled_switch = document.createElement("input");
+				trick_enabled_switch.type = "button";
+				trick_enabled_switch.value = "[ ]";
+				trick_enabled_switch.title = "Switch enabled";
+				trick_enabled_switch.id = trick + "_enabled_switch";
+				trick_enabled_switch.className = "trick_enabled_switch";
 				let temp = trick; // idk why I need to do this
 				trick_switch.onclick = () => { set_tab(temp) };
+				trick_enabled_switch.onclick = () => {
+					chrome.runtime.sendMessage({ type: "o_enable", data: temp });
+				};
 
 				sidebar.appendChild(trick_switch);
+				sidebar.appendChild(trick_enabled_switch);
 
 				for (i in tricks[trick].manifest.options) {
 					let id = trick + "_" + tricks[trick].manifest.options[i].name;
@@ -102,6 +112,16 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 					if (element) element.value = tricks[trick].manifest.options[i].value || tricks[trick].manifest.options[i].default_value;
 				}
 			};
+
+			chrome.runtime.sendMessage({ type: "i_enabled" });
+			break;
+		case "o_enabled":
+			for (trick in tricks) {
+				let element = document.getElementById(trick + "_enabled_switch");
+				let enabled = request.data.includes(trick);
+				element.className = "trick_enabled_switch" + (enabled ? "_enabled" : "");
+				element.value = enabled ? "On" : "Off";
+			}
 			break;
 		case "o_log":
 			if (current_tab_name != "main") break; // log is visible only on main tab
@@ -118,20 +138,18 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 });
 
 document.getElementById("apply_button").onclick = () => {
-	for (trick in tricks) {
-		tricks[trick].manifest.options.forEach(option => {
-			let v;
-			switch (option.type) {
-				case "string":
-					v = document.getElementById(trick + "_" + option.name).value;
-					break;
-				case "bool":
-					v = document.getElementById(trick + "_" + option.name).checked ? "true" : "false";
-					break;
-			}
-			chrome.runtime.sendMessage({ type: "o_option", data: { trick: trick, name: option.name, value: v } });
-		});
-	}
+	tricks[current_tab_name].manifest.options.forEach(option => {
+		let v;
+		switch (option.type) {
+			case "string":
+				v = document.getElementById(current_tab_name + "_" + option.name).value;
+				break;
+			case "bool":
+				v = document.getElementById(current_tab_name + "_" + option.name).checked ? "true" : "false";
+				break;
+		}
+		chrome.runtime.sendMessage({ type: "o_option", data: { trick: current_tab_name, name: option.name, value: v } });
+	});
 };
 
 set_tab("main");

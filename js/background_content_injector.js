@@ -9,12 +9,17 @@ function try_inject_content() {
 
 			var content_code = "";
 
-			for (trick in tricks) tricks[trick].manifest.options.forEach(o => {
-				content_code += "let " + o.name + " = \"" + (o.value || o.default_value) + "\";"
-			});
+			for (trick in tricks) {
+				if (!tricks[trick].manifest.content) continue;
+				if (!enabled_tricks.includes(trick)) continue;
+				tricks[trick].manifest.options.forEach(o => {
+					content_code += "let " + o.name + " = \"" + (o.value || o.default_value) + "\";"
+				});
+			}
 
 			for (trick in tricks) {
 				if (!tricks[trick].manifest.content) continue;
+				if (!enabled_tricks.includes(trick)) continue;
 				log("Injecting " + trick);
 
 				const contentfile = "tricks/" + trick + "/" + tricks[trick].manifest.content;

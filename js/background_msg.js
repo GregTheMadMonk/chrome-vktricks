@@ -19,7 +19,7 @@ function save() {
 	}
 
 	log(object);
-	chrome.storage.local.set({ options: object });
+	chrome.storage.local.set({ options: object, enabled: JSON.stringify(enabled_tricks) });
 }
 
 function load() {
@@ -36,6 +36,9 @@ function load() {
 			}
 		}
 	});
+	chrome.storage.local.get("enabled", options => {
+		if (options.enabled) enabled_tricks = JSON.parse(options.enabled);
+	});
 }
 
 chrome.runtime.onMessage.addListener((request, sender, callback) => {
@@ -43,6 +46,9 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 	switch (request.type) {
 		case "i_tricks":
 			chrome.runtime.sendMessage({ type: "o_tricks", data: tricks });
+			break;
+		case "i_enabled":
+			chrome.runtime.sendMessage({ type: "o_enabled", data: enabled_tricks });
 			break;
 		case "i_log":
 			chrome.runtime.sendMessage({ type: "o_log", data: msg_log });
@@ -53,6 +59,14 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 					tricks[request.data.trick].manifest.options[i].value = request.data.value;
 			}
 			save();
+			break;
+		case "o_enable":
+			let index = enabled_tricks.indexOf(request.data);
+			if (index == -1) enabled_tricks.push(request.data);
+			else enabled_tricks.splice(index, 1);
+			console.log(enabled_tricks);
+			save();
+			chrome.runtime.sendMessage({ type: "o_enabled", data: enabled_tricks });
 			break;
 	}
 });

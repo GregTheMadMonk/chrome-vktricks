@@ -20,7 +20,8 @@ Array.from(document.getElementsByClassName("left_label inl_bl")).forEach(node =>
 
 	if (replacer != "none") node.innerText = replacer;
 
-	if (document.getElementById("top_profile_link").href == node.parentElement.href)
+	if ((document.getElementById("top_profile_link").href == node.parentElement.href) &&
+		(sr_profile != "none"))
 		node.innerText = sr_profile;
 });
 

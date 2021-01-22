@@ -88,8 +88,12 @@ body {
 	color: #ddd;
 	border: none;
 	padding: 1em;
-	width: 100%;
+	width: 80%;
 	transition: 0.2s;
+}
+
+#sidebar #main_switch {
+	width: 100%;
 }
 
 #sidebar .trick_switch:hover {
@@ -100,7 +104,37 @@ body {
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
-#sidebar .trick_switch:focus, #header #apply_button:focus {
+#sidebar .trick_enabled_switch, #sidebar .trick_enabled_switch_enabled {
+	background-color: #b00;
+	border: none;
+	color: #ddd;
+	margin: 0;
+	padding: 1em;
+	width: 20%;
+	transition: 0.2s;
+}
+
+#sidebar .trick_enabled_switch_enabled {
+	background-color: #0b0;
+}
+
+#sidebar .trick_enabled_switch:hover {
+	background-color: #900;
+}
+
+#sidebar .trick_enabled_switch:active {
+	background-color: #700;
+}
+
+#sidebar .trick_enabled_switch_enabled:hover {
+	background-color: #090;
+}
+
+#sidebar .trick_enabled_switch_enabled:active {
+	background-color: #070;
+}
+
+#sidebar .trick_switch:focus, #sidebar .trick_enabled_switch, #sidebar .trick_enabled_switch_enabled, #header #apply_button:focus {
 	outline: none;
 }
 
