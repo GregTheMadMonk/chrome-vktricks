@@ -5,7 +5,11 @@
 
 ## Возможности расширения:
 * **Sidebar Renamer** - переименование разделов в боковой панели
+
+<img src="readme_assets/sidebar_renamer_1.jpg"></img>
 * **VTwitch** - отображение emotes с Twitch в диалогах
+
+<img src="readme_assets/vtwitch_1.gif"></img>
 
 ## Установка
 1. Перейти в **chrome://extensions**
