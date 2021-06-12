@@ -1,0 +1,13 @@
+.im-page {
+	display: flex !important;
+	flex-direction: row !important;
+}
+
+.im-page .im-page--dialogs {
+	order: 2 !important;
+}
+
+.im-page .im-page--history {
+	order: 1 !important;
+	margin-left: 0 !important;
+}

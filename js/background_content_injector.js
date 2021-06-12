@@ -7,6 +7,27 @@ function try_inject_content() {
 		if (tab.url.match(/https:\/\/vk.com.*/) != null) {
 			log("Current tab is VK");
 
+			// Inject CSS
+			for (trick in tricks) {
+				if (!tricks[trick].manifest.css) continue;
+				if (!enabled_tricks.includes(trick)) continue;
+				log("Injecting CSS for " + trick + "...");
+
+				const cssfile = "tricks/" + trick + "/" + tricks[trick].manifest.css;
+
+				chrome.runtime.getPackageDirectoryEntry(dir_e => dir_e.getFile(cssfile, {},
+					file => file.file(file_file => { // ikr
+						let css_reader = new FileReader();
+						css_reader.onloadend = (e) => {
+							// Inject CSS content
+							chrome.tabs.insertCSS(tab.id, { code: css_reader.result });
+						};
+						css_reader.readAsText(file_file);
+					})));
+			}
+
+			// Inject JS
+			// Declare options
 			var content_code = "";
 
 			for (trick in tricks) {
@@ -17,10 +38,11 @@ function try_inject_content() {
 				});
 			}
 
+			// Inject code
 			for (trick in tricks) {
 				if (!tricks[trick].manifest.content) continue;
 				if (!enabled_tricks.includes(trick)) continue;
-				log("Injecting " + trick);
+				log("Injecting JS for " + trick + "...");
 
 				const contentfile = "tricks/" + trick + "/" + tricks[trick].manifest.content;
 

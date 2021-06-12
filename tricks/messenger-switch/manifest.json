@@ -1,0 +1,6 @@
+{
+	"display_name":	"Messenger Switcher",
+	"description":	"Switches content and sidebar in new messenger",
+	"version":	"1.0.0",
+	"css":		"css/switch.css"
+}
