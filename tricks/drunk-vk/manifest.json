@@ -1,0 +1,8 @@
+{
+	"display_name":	"Drunk VK",
+	"description":	"Makes stuff spin",
+	"version":	"1.0.0",
+	"content":	"js/content.js",
+	"options": [
+	]
+}
