@@ -5,9 +5,15 @@
 
 .im-page .im-page--dialogs {
 	order: 2 !important;
+
+	border-left: .25px lightgray solid !important;
+
+	box-shadow: none !important;
 }
 
 .im-page .im-page--history {
 	order: 1 !important;
 	margin-left: 0 !important;
+
+	box-shadow: var(--page-block-shadow) !important;
 }
