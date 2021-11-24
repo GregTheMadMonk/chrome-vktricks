@@ -7,9 +7,14 @@
 * **Sidebar Renamer** - переименование разделов в боковой панели
 
 <img src="readme_assets/sidebar_renamer_1.jpg"></img>
-* **VTwitch** - отображение emotes с Twitch в диалогах
+* **VTwitch** - отображение emotes с Twitch в диалогах.
+_ОЧЕНЬ лагучее_.
 
 <img src="readme_assets/vtwitch_1.gif"></img>
+
+* **Messenger Switcher** - костыль, который меняет местами блоки в новом мессенджере чтобы центрировать текущий диалог. _Костыль_, работает плохо!
+
+* **DrunkVK** - заставльяет некоторые элементы страницы вращаться случайным образом.
 
 ## Установка
 1. Перейти в **chrome://extensions**
